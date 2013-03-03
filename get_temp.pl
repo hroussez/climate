@@ -3,9 +3,9 @@ use LWP::UserAgent;
 
 use strict;
 
-my $dir = '/path/to/your/temperature/scripts';
-my $metar_url = 'http://weather.noaa.gov/pub/data/observations/metar/stations/KMSN.TXT';
-my $is_celsius = 0; #set to 1 if using Celsius
+my $dir = '/home/henri/climate';
+my $metar_url = 'http://weather.noaa.gov/pub/data/observations/metar/stations/LFQQ.TXT';
+my $is_celsius = 1; #set to 1 if using Celsius
 
 my $ua = new LWP::UserAgent;
 $ua->timeout(120);
@@ -30,9 +30,10 @@ else
 
 my $output = "";
 my $attempts = 0;
+
 while ($output !~ /YES/g && $attempts < 5)
 {
-    $output = `sudo cat /sys/bus/w1/devices/28-*/w1_slave 2>&1`;
+    $output = `cat /sys/bus/w1/devices/28-*/w1_slave 2>&1`;
     if($output =~ /No such file or directory/)
     {
         print "Could not find DS18B20\n";
@@ -43,10 +44,9 @@ while ($output !~ /YES/g && $attempts < 5)
         $output =~ /t=(\d+)/i;
         my $temp = ($is_celsius) ? ($1 / 1000) : ($1 / 1000) * 9/5 + 32;
         my $rrd = `/usr/bin/rrdtool update $dir/hometemp.rrd N:$temp:$outtemp`;
+        print "in temp: $temp\n";
+        last;
     }
 
     $attempts++;
 }
-
-#print "Inside temp: $temp\n";
-#print "Outside temp: $outtemp\n";

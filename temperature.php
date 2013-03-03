@@ -1,4 +1,4 @@
-<? $lastmod = date("F d, Y g:i A", filemtime("temp_daily.png")); ?>
+<? $lastmod = date("F d, Y g:i A", filemtime("img/temp_yearly.png")); ?>
 <html>
 <head>
   <meta http-equiv="cache-control" content="no-cache">
@@ -12,7 +12,7 @@
         background-repeat: no-repeat; background-position: center center; 
       }
  
-      H2, H3 { margin-bottom: 0; }
+      H2 { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -20,17 +20,13 @@
     <h2>RPi Temperature Inside & Outside</h2>
     <i>Last Modified: <?=$lastmod?></i>
      
-    <h3>Daily</h3>
-    <img src="temp_daily.png" />
-     
-    <h3>Weekly</h3>
-    <img src="temp_weekly.png" />
-     
-    <h3>Monthly</h3>
-    <img src="temp_monthly.png" />
-     
-    <h3>Yearly</h3>
-    <img src="temp_yearly.png" />
+    <p>
+        <img src="img/temp_hourly.png" />
+        <img src="img/temp_daily.png" />
+        <img src="img/temp_weekly.png" />
+        <img src="img/temp_monthly.png" />
+        <img src="img/temp_yearly.png" />
+    </p>
   </div>
 </body>
 </html>
