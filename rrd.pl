@@ -9,12 +9,14 @@ use Log::Log4perl qw{ :easy };
 
 Log::Log4perl->easy_init($DEBUG);
 
-my $metar_url = 'http://weather.noaa.gov/pub/data/observations/metar/stations/LFQQ.TXT';
+my $metar_url = 'http://weather.noaa.gov/pub/data/observations/metar/stations/LFQQ.TXT'; # Lesquin
 my $refreshOutTime = 600; # 10min
 my $limitOutTime = $refreshOutTime*2; # 20min
-my $script = "/home/henri/sensor";
+my $script = "/home/henri/climate/dht11_4";
 my $rrdFile = '/home/henri/climate/hometemp.rrd';
 my %out;
+
+$< ne 0 and die "must be root";
 
 DEBUG "$0 initialization, start loop";
 

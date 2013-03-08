@@ -16,16 +16,25 @@
   </style>
 </head>
 <body>
-  <div style="width: 800px; margin-left: 100px;" >
+  <div style="width: 980px; margin-left: 200px;" >
     <h2>RPi Temperature Inside & Outside</h2>
     <i>Last Modified: <?=$lastmod?></i>
      
     <p>
         <img src="img/temp_hourly.png" />
+        <img src="img/humidity_hourly.png" />
+
         <img src="img/temp_daily.png" />
+        <img src="img/humidity_daily.png" />
+
         <img src="img/temp_weekly.png" />
+        <img src="img/humidity_weekly.png" />
+
         <img src="img/temp_monthly.png" />
+        <img src="img/humidity_monthly.png" />
+
         <img src="img/temp_yearly.png" />
+        <img src="img/humidity_yearly.png" />
     </p>
   </div>
 </body>
